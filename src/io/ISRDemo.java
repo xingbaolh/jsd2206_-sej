@@ -10,7 +10,6 @@ import java.io.InputStreamReader;
 public class ISRDemo {
     public static void main(String[] args) throws IOException {
         //将当前源代码读取出来并输出到控制台上
-
         FileInputStream fis = new FileInputStream("./src/io/ISRDemo.java");
         InputStreamReader isr = new InputStreamReader(fis);
         /*
