@@ -2,6 +2,7 @@ package homework;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 /**
  * 完成一个转码工具。
@@ -24,43 +25,24 @@ import java.nio.charset.StandardCharsets;
  */
 public class Test02 {
     public static void main(String[] args) throws IOException {
-        /*
-    提示代码:
-	需要用到的语句，尝试按照正确顺序将下列代码并放在main方法中完成需求，
-	并在注释中标注每句话的作用，
-
-    //【在这里标注该句代码意义】
-    while((line = br.readLine())!=null){
-    }
-    //【在这里标注该句代码意义】
-    InputStreamReader isr = new InputStreamReader(fis,"GBK");
-    //【在这里标注该句代码意义】
-    OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF-8");
-    //【在这里标注该句代码意义】
-    BufferedReader br = new BufferedReader(isr);
-    //【在这里标注该句代码意义】
-    PrintWriter pw = new PrintWriter(bw);
-    //【在这里标注该句代码意义】
-    FileInputStream fis = new FileInputStream("note.txt");
-    //【在这里标注该句代码意义】
-    BufferedWriter bw = new BufferedWriter(osw);
-    //【在这里标注该句代码意义】
-    String line;
-    //【在这里标注该句代码意义】
-    pw.println(line);
-    //【在这里标注该句代码意义】
-    System.out.println("转码完毕!");
-    br.close();
-    pw.close();
-    //【在这里标注该句代码意义】
-    FileOutputStream fos = new FileOutputStream("note_utf.txt");
-        */
-        FileInputStream fis=new FileInputStream("./src/homework/note.txt");
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("要读取的文件！");
+        String name=scanner.nextLine();//控制台读取文件
+        FileInputStream fis=new FileInputStream(name);
         InputStreamReader fi=new InputStreamReader(fis,"GBK");
         BufferedReader bus=new BufferedReader(fi);
+        System.out.println("转码到文件：");
+        String name1=scanner.nextLine();//控制台读取文件
+        FileOutputStream fos=new FileOutputStream(name1);
 
-        FileOutputStream fos=new FileOutputStream("note_utf.txt");
-        OutputStreamWriter ows=new OutputStreamWriter(fos,"UTF-8");
+        OutputStreamWriter ows=null;
+        System.out.println("选择转码类型GBK,UTF-8");
+        String type=scanner.nextLine();
+        if("GBK".equals(type)){
+            ows=new OutputStreamWriter(fos,"GBK");
+        }else if("UTF-8".equals(type)){
+            ows=new OutputStreamWriter(fos,"UTF-8");
+        }
         BufferedWriter buw=new BufferedWriter(ows);
         PrintWriter pw=new PrintWriter(buw);
         String line;
@@ -70,6 +52,5 @@ public class Test02 {
         System.out.println("ok");
         buw.close();
         pw.close();
-
     }
 }
