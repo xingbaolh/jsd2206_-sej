@@ -14,15 +14,21 @@ public class WorkDemo {
         //3创建缓冲字符流(高级流，字符流):块写文本数据加速
         BufferedWriter bs = new BufferedWriter(fs);
         //4创建PrintWriter(高级流，字符流):按行写出字符串，自动行刷新
-        PrintWriter ps = new PrintWriter(bs);
+        PrintWriter ps = new PrintWriter(bs, true);
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("请输入(exit退出)：");
-            String name = scanner.next();
-            if(name.equals("exit")){
-                break;
+            String name = scanner.nextLine();
+            //避免返回的String值为null，产生空指针异常
+            /*
+                开发中如果出现字符串变量与字面量(直接量)进行equals比较时，要使用
+                字面量.equals(变量)的形式。因为字面量一定非空，可以避免空指针的产生
+             */
+            if ("exit".equals(name)) {
+                break;//如果用户输入的是退出，则停止循环
             }
             ps.println(name);
+            //ps.flush();
         }
         ps.close();
     }
