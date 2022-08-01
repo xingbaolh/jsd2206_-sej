@@ -17,4 +17,4 @@ public class BOSDemo {
         bfos.close();
     }
 }
-class  D{}
+
