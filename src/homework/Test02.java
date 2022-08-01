@@ -25,29 +25,37 @@ import java.util.Scanner;
  */
 public class Test02 {
     public static void main(String[] args) throws IOException {
-        Scanner scanner=new Scanner(System.in);
-        System.out.println("要读取的文件！");
-        String name=scanner.nextLine();//控制台读取文件
-        FileInputStream fis=new FileInputStream(name);
-        InputStreamReader fi=new InputStreamReader(fis,"GBK");
-        BufferedReader bus=new BufferedReader(fi);
+        Scanner scanner = new Scanner(System.in);
+       /* System.out.println("要读取的文件！");
+        String name = scanner.nextLine();//控制台读取文件*/
+        FileInputStream fis = new FileInputStream("./src/homework/note.txt");
+        InputStreamReader fi = new InputStreamReader(fis, "GBK");
+        BufferedReader bus = new BufferedReader(fi);
         System.out.println("转码到文件：");
-        String name1=scanner.nextLine();//控制台读取文件
-        FileOutputStream fos=new FileOutputStream(name1);
+        String name1 = scanner.nextLine();//控制台读取文件
+        FileOutputStream fos = new FileOutputStream(name1);
 
-        OutputStreamWriter ows=null;
+        OutputStreamWriter ows = null;
         System.out.println("选择转码类型GBK,UTF-8");
-        String type=scanner.nextLine();
-        if("GBK".equals(type)){
-            ows=new OutputStreamWriter(fos,"GBK");
-        }else if("UTF-8".equals(type)){
-            ows=new OutputStreamWriter(fos,"UTF-8");
+        String type = scanner.nextLine();
+        if ("GBK".equals(type)) {
+            ows = new OutputStreamWriter(fos, "GBK");
+        } else if ("UTF-8".equals(type)) {
+            ows = new OutputStreamWriter(fos, "UTF-8");
         }
-        BufferedWriter buw=new BufferedWriter(ows);
-        PrintWriter pw=new PrintWriter(buw);
+        BufferedWriter buw = new BufferedWriter(ows);
+        PrintWriter pw = new PrintWriter(buw, true);
         String line;
-        while ((line=bus.readLine())!=null){
+        while ((line = bus.readLine()) != null) {
             pw.println(line);
+        }
+        System.out.println("请添加内容：");
+        while (true) {
+            String str = scanner.nextLine();
+            if ("exit".equals(str)) {
+                break;
+            }
+
         }
         System.out.println("ok");
         buw.close();
