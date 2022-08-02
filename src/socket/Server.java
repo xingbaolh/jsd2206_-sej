@@ -36,6 +36,7 @@ public class Server {
             while ((line=bu.readLine())!=null) {
                 System.out.println("客户端说:" + line);
             }
+            bu.close();
             System.out.println("聊天已退出！");
         } catch (IOException e) {
             e.printStackTrace();
