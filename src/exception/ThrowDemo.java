@@ -13,7 +13,7 @@ public class ThrowDemo {
                 实际开发中选择那种取决于业务需求.
              */
             person.setAge(200);//满足语法,但是不满足业务
-        } catch (Exception e) {
+        } catch (IllegalAgeException e) {
             e.printStackTrace();
         }
         System.out.println("此人年龄"+person.getAge()+"岁");
